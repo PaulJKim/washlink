@@ -4,8 +4,6 @@ defmodule WashlinkWeb.BuildingController do
   alias Washlink.Buildings
   alias Washlink.Buildings.Building
 
-  action_fallback WashlinkWeb.FallbackController
-
   def index(conn, _params) do
     buildings = Buildings.list_buildings()
     render(conn, "index.json", buildings: buildings)

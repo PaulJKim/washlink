@@ -12,11 +12,17 @@ defmodule WashlinkWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+    get "/hello", WashlinkWeb.HelloController, :index
+
+    resources "/bookings", WashlinkWeb.BookingController,
+      only: [:index, :create, :show, :update, :delete]
+
+    resources "/buildings", WashlinkWeb.BuildingController,
+      only: [:index, :create, :show, :update, :delete]
   end
 
   scope "/", WashlinkWeb do
     pipe_through :browser
-
     get "/", PageController, :index
   end
 
