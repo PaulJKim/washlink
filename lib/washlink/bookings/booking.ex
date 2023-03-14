@@ -6,6 +6,9 @@ defmodule Washlink.Bookings.Booking do
     field :end_time, :utc_datetime
     field :start_time, :utc_datetime
 
+    belongs_to :amenity, Washlink.Amenities.Amenity
+    belongs_to :user, Washlink.Accounts.User
+
     timestamps()
   end
 

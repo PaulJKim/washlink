@@ -4,7 +4,9 @@ defmodule Washlink.Accounts.User do
 
   schema "users" do
     field :email, :string
-    field :name, :string
+    field :first_name, :string
+    field :last_name, :string
+    field :building_id, :integer
     field :password, :string, virtual: true
     field :password_hash, :string
 

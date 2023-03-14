@@ -5,6 +5,8 @@ defmodule Washlink.Amenities.Amenity do
   schema "amenities" do
     field :type, :string
 
+    belongs_to :building, Washlink.Buildings.Building
+
     timestamps()
   end
 
