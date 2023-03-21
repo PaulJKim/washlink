@@ -4,8 +4,6 @@ defmodule WashlinkWeb.BookingController do
   alias Washlink.Bookings
   alias Washlink.Bookings.Booking
 
-  action_fallback WashlinkWeb.FallbackController
-
   def index(conn, _params) do
     bookings = Bookings.list_bookings()
     render(conn, "index.json", bookings: bookings)
