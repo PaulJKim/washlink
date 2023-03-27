@@ -12,18 +12,16 @@ defmodule WashlinkWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
-    get "/hello", WashlinkWeb.HelloController, :index
-
-    resources "/bookings", WashlinkWeb.BookingController,
-      only: [:index, :create, :show, :update, :delete]
-
-    resources "/buildings", WashlinkWeb.BuildingController,
-      only: [:index, :create, :show, :update, :delete]
+    plug :fetch_session
   end
 
   scope "/", WashlinkWeb do
-    pipe_through :browser
-    get "/", PageController, :index
+    pipe_through :api
+
+    resources "/bookings", BookingController, only: [:index, :create, :show, :update, :delete]
+    resources "/buildings", BuildingController, only: [:index, :create, :show, :update, :delete]
+    resources "/users", UserController, only: [:create, :show, :update, :delete]
+    resources("/sessions", SessionController, only: [:create, :delete])
   end
 
   # Other scopes may use custom stacks.
